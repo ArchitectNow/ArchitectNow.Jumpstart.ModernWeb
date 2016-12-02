@@ -61,21 +61,15 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports) {
 
-﻿document.write("I'm required to be here.");
+﻿document.write("javascript file 1 was loaded");
 
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-﻿document.write("I'm from file #2.");
-__webpack_require__(0);
 
 /***/ }
 /******/ ]);

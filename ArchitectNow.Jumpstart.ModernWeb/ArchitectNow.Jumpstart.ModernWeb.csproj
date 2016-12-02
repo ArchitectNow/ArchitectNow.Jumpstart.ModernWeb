@@ -87,8 +87,8 @@
     <Content Include="config\webpack.common.js" />
     <Content Include="config\webpack.dev.js" />
     <Content Include="config\webpack.prod.js" />
-    <Content Include="index.html" />
-    <Content Include="src\app.component.html" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\index.html" />
     <Content Include="Web.config" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
@@ -110,9 +110,11 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app.component.ts" />
-    <TypeScriptCompile Include="src\app.module.ts" />
-    <TypeScriptCompile Include="src\bootstrap.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\bootstrap.ts" />
+    <TypeScriptCompile Include="src\app\polyfills.ts" />
+    <TypeScriptCompile Include="src\app\vendor.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
