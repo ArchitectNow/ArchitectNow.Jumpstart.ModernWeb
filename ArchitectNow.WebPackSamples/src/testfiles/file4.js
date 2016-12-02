@@ -1,0 +1,1 @@
+﻿document.write(require('./snippet.html'));

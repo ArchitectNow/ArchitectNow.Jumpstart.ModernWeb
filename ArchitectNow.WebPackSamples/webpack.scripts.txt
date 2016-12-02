@@ -1,0 +1,7 @@
+﻿// simple move
+webpack ./src/testfiles/file1.js wwwroot/output.js
+
+// use config file for above
+webpack --config config/webpack.file1.js
+
+webpack --config config/webpack.file2.js

@@ -1,0 +1,1 @@
+﻿document.write("I'm required to be here.");

@@ -1,0 +1,9 @@
+wwwroot
+src/**/*.js
+src/**/*.map
+src/**/*.orig
+src/**/*.log
+obj/
+bin/
+npm-debug*
+project.fragment.lock.json
