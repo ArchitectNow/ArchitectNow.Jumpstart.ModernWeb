@@ -12,7 +12,7 @@
       <div *ngIf="results">
         <person-row *ngFor="let person of results?.results" [person]="person" (onEdit)="editPerson($event)"></person-row>
       </div>
-      <div *ngIf="previousEnabled()" (click)="previousPage()">Previous</div>&nbsp;<div *ngIf="nextEnabled()" (click)="nextPage()">Next</div>
+      <a *ngIf="previousEnabled()" (click)="previousPage()">Previous</a>&nbsp;<a *ngIf="nextEnabled()" (click)="nextPage()">Next</a>
     </div>
   </div>
 </div>
