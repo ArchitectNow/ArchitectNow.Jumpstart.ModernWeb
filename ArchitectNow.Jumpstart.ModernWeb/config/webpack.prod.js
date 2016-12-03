@@ -14,7 +14,7 @@ module.exports = webpackMerge(commonConfig, {
     output: {
         path: helpers.dist(),
         publicPath: '/',
-        filename: '[name].js',
+        filename: '[name].[hash].js',
         chunkFilename: '[id].chunk.js',
         libraryTarget: 'umd',
         umdNamedDefine: true
