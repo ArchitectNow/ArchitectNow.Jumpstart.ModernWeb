@@ -1,0 +1,7 @@
+$sidebar-width: 220px;
+$sidebar-bg: #1a1a1a;
+
+$sidebar-toggle-bg: blue;
+// override bootstrap styles above this comment
+@import "bootstrap/variables";
+@import "bootstrap/mixins";

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>People</h1>
+      <div>
+        Search By: <input type="text" [(ngModel)]="searchFilter"/>&nbsp;<button (click)="search()">Search</button>
+      </div>
+      <h2>Results</h2>
+      <div *ngIf="!results">
+        Loading results...
+      </div>
+      <div *ngIf="results">
+        <person-row *ngFor="let person of results?.results" [person]="person" (onEdit)="editPerson($event)"></person-row>
+      </div>
+      <div *ngIf="previousEnabled()" (click)="previousPage()">Previous</div>&nbsp;<div *ngIf="nextEnabled()" (click)="nextPage()">Next</div>
+    </div>
+  </div>
+</div>

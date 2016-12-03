@@ -5,12 +5,27 @@ var extractCSS = new ExtractTextPlugin('css/main.css');
 /*
  * Webpack Plugins
  */
+// problem with copy-webpack-plugin
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+// const HtmlElementsPlugin = require('./html-elements-plugin');
+
+/*
+ * Webpack Constants
+ */
+const METADATA = {
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
+};
 
 module.exports = {
-
+    /*
+	 * Static metadata for index.html
+	 *
+	 * See: (custom attribute)
+	 */
+    metadata: METADATA,
     // context: helpers.src(),
     /*
 	 * The entry point for the bundle
@@ -19,9 +34,9 @@ module.exports = {
 	 * See: http://webpack.github.io/docs/configuration.html#entry
 	 */
     entry: {
-        'scripts/polyfills': helpers.src('app', 'polyfills.ts'),
         'scripts/vendor': helpers.src('app', 'vendor.ts'),
-        'scripts/app': helpers.src('app', 'bootstrap.ts')
+        'scripts/app': helpers.src('app', 'bootstrap.ts'),
+        'scripts/polyfills': helpers.src('app', 'polyfills.ts')
     },
 
     /*
@@ -63,7 +78,9 @@ module.exports = {
 			{
 			    test: /\.ts$/,
 			    loaders: [
-					'awesome-typescript-loader'
+					'awesome-typescript-loader',
+					'angular2-template-loader',
+					'angular2-router-loader'
 			    ],
 			    exclude: [/\.(spec|e2e)\.ts$/]
 			},
@@ -85,28 +102,72 @@ module.exports = {
 			    loader: 'file?name=assets/[name].[hash].[ext]'
 			},
 			{
-				test: /\.scss$/,
-				include: [
+			    test: /\.scss$/,
+			    include: [
 					helpers.src('app')
-				],
-				loader: 'raw-loader!sass-loader'
+			    ],
+			    loader: 'raw-loader!sass-loader'
+			},
+			{
+			    // application wide styles
+			    test: /\.scss$/,
+			    include: [
+					helpers.src('scss'),
+			    ],
+			    loader: extractCSS.extract(['raw-loader', 'sass-loader'])
 			}
         ]
     },
+    postcss: function () {
+        return [require('autoprefixer')];
+    },
     plugins: [
-        		new webpack.ContextReplacementPlugin(
+		new webpack.ContextReplacementPlugin(
 			// The (\\|\/) piece accounts for path separators in *nix and Windows
 			/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
 			helpers.src()
 		),
-        new webpack.optimize.CommonsChunkPlugin({
-        	name: [
-                'scripts/vendor',
-                'scripts/polyfills'
-        	]
-        }),
+		/*
+		 * Plugin: ForkCheckerPlugin
+		 * Description: Do type checking in a separate process, so webpack don't need to wait.
+		 *
+		 * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+		 */
+		// new ForkCheckerPlugin(),
+		extractCSS,
+		/*
+		 * Plugin: CommonsChunkPlugin
+		 * Description: Shares common code between the pages.
+		 * It identifies common modules and put them into a commons chunk.
+		 *
+		 * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+		 * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
+		 */
+		new webpack.optimize.CommonsChunkPlugin({
+		    name: [
+				'scripts/vendor',
+				'scripts/polyfills'
+		    ]
+		}),
+		new CopyWebpackPlugin([{ from: helpers.src('images'), to: 'images' }]),
+		new CopyWebpackPlugin([{ from: helpers.src('fonts'), to: 'fonts' }]),
 		new HtmlWebpackPlugin({
 		    template: helpers.src('index.html')
 		})
-    ]
+    ],
+
+    /*
+	 * Include polyfills or mocks for various node stuff
+	 * Description: Node configuration
+	 *
+	 * See: https://webpack.github.io/docs/configuration.html#node
+	 */
+    node: {
+        global: 'window',
+        crypto: 'empty',
+        process: true,
+        module: false,
+        clearImmediate: false,
+        setImmediate: false
+    }
 };
