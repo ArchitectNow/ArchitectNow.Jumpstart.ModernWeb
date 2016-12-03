@@ -7,6 +7,7 @@ class MiscSamples {
     doWork(func: (input1: number, input2: number) => boolean)
     {
         this.funcField = func;
+
     }
 
     setFunction()

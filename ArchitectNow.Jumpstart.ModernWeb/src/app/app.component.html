@@ -1,1 +1,79 @@
-﻿HELLO CLASS!
+﻿<h1>Template Binding Demonstration</h1>
+<p>The following examples demonstrate different template syntax capabilities to bind an HTML template to a TypeScript component.
+<h2>Interpolation</h2>
+<div>
+        Name via brackets: {{ nameFirst }} <br/>
+        Name: <span [innerHTML]="nameFirst"></span> <br/>
+        Name Input: <input type="text" [(ngModel)]="nameFirst"/><br/>
+        <br/>
+        Click to check: <input type="checkbox" [(ngModel)]="isChecked"/><br/>
+        Am I checked?: {{ isChecked ? 'I am' : 'No I am Not' }}<br/>
+        <br/>
+        Can I calculate a value?: {{ 1 + 2 + 3 }} <br/>
+        How long is my first name?: {{ nameFirst.length }}
+</div>
+<h2>Attribute/Style Binding</h2>
+<div>
+        Attribute Example: <div [attr.align]="isChecked ? 'center' : 'left'">Am I centered?</div> <br/>
+        Style Example: <div [style.color]="isChecked ? 'red' : 'black'">I am red</div><br/>
+        Class Example: <div [class.customHighlight]="isChecked">I might be highlighted</div>
+</div>
+<h2>Event Binding</h2>
+<div>
+        <div>What did you last click?: {{ lastAction }}</div><br/>
+        <div (click)="clickMe()">Click Me</div> <br/>
+        <button (click)="buttonClicked()" [disabled]="!isChecked">I'm a button</button> <br/>
+        <br/>
+        <div>Last Input Event: {{ inputEvent }}<br/><br/>
+       Input Event Sample: <input type="text" (blur)="inputEvent='blur'" (keyup.enter)="inputEvent='enter'"/>
+</div>
+<h1>Angular 2 Directives</h1>
+<p>Angular ships with some useful directives which are built in.  The following are some examples.</p>
+
+<h2>ngIf</h2>
+<div>
+    Show Content: <input type="checkbox" [(ngModel)]="showElements"/><br/><br/>
+    <div *ngIf="showElements">
+        This content is completely removed from the DOM if the *ngIf evaluates to false    
+    </div><br/>
+    <div [hidden]="!showElements">
+        This content is simply hidden in the DOM if the 'showElements' evaluates to false
+    </div>
+    <div *ngIf="!showElements">
+       I'm the default content in this area
+    </div>
+</div>
+<h2>ngFor</h2>
+<div>
+    <h3>Basic List of States</h3>
+    <ul> <!-- repeat a list -->
+        <li *ngFor="let state of states">{{ state }}</li>
+    </ul>
+    <h3>Uppercase List of States</h3>
+    <ul> <!-- repeat a list -->
+        <li *ngFor="let state of states">{{ state | uppercase }}</li>
+    </ul>
+    <h3>Selectable List of States</h3>
+    <ul> <!-- repeat a list -->
+        <li *ngFor="let state of states" (click)="selectedState = state" [class.selectedState]="selectedState==state">{{ state }}&nbsp;<span (click)="deleteState(state)">(x)</span></li>
+    </ul>
+    <br/>
+    Total States: {{ states.length }}<br/>
+    <br/>
+    Add State: <input #newState
+      (keyup.enter)="addState(newState.value); newState.value='' "
+      (blur)="addState(newState.value); newState.value='' ">
+
+    <button (click)="addState(newState.value); newState.value=''">Add</button>
+</div>
+<h2>ngSwitch</h2>
+<div>
+   Pick a Number between 1 and 3: <input type="number" [(ngModel)]="selectedNumber"/><br/>
+   <br/>
+   <div [ngSwitch]="selectedNumber">
+        <span *ngSwitchCase="1">You chose 1</span>
+        <span *ngSwitchCase="2">You chose 2</span>
+        <span *ngSwitchCase="3">You chose 3</span>
+        <span *ngSwitchDefault>You chose some other number</span>
+    </div>
+</div>
