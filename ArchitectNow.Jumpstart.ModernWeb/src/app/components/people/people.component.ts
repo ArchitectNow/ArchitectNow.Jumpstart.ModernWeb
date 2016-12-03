@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { NgRedux, DevToolsExtension } from "ng2-redux";
 
+import { IAppState } from "../../store/IAppState";
 import { PersonService } from "../../services/personService";
 import { Person } from "../../models/person";
 import { PersonResults } from "../../models/personResults";
@@ -21,12 +23,23 @@ export class PeopleComponent implements OnInit {
     errMsg: string = "";
     isLoading: boolean = false;
 
-    constructor (private _peopleService: PersonService, private _router: Router) {
+    constructor (private _peopleService: PersonService, 
+                 private _router: Router,
+                 private _ngRedux: NgRedux<IAppState>) {
 
     }
 
     ngOnInit() {
-        this.search();
+        var _state = this._ngRedux.getState();
+
+        if (!_state.personSearchState || !_state.personSearchState.lastResults || !_state.personSearchState.lastResults.results)
+        {
+            this.search();
+            return;
+        }
+
+        this.results = _state.personSearchState.lastResults;
+        
     }
 
     search() {
