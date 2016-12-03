@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { NgModule } from "@angular/core/src/metadata/ng_module";
 import { APP_ROUTES } from "./app.routes";
+import { NgRedux, DevToolsExtension } from "ng2-redux";
 
 import { HomeComponent } from "./components/home/home.component";
 import { AboutComponent } from "./components/about/about.component";
@@ -36,7 +37,9 @@ import { PersonService } from "./services/personService";
         RouterModule.forRoot(APP_ROUTES)
     ],
     providers: [
-        PersonService
+        PersonService,
+        NgRedux,
+        DevToolsExtension
     ],
     bootstrap: [
         AppComponent

@@ -34,6 +34,7 @@ export class PeopleComponent implements OnInit {
         this._peopleService.getPeople(this.searchFilter).subscribe(data => {
             //Success
             this.results = data;
+            this._peopleService.setLastResults(this.results);
         },
         err => {
             //Error

@@ -1,14 +1,19 @@
 ﻿import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs";
+import { NgRedux, DevToolsExtension } from "ng2-redux";
+import { IAppState } from "../store/IAppState";
+
 import { Person } from "../models/person";
 import { PersonResults } from "../models/personResults";
+import { PersonSearchReducerActions } from "../store/reducers/PersonSearchReducer";
 
 @Injectable()
 export class PersonService {
     readonly rootUrl: string = "http://swapi.co/api/";
 
-    constructor(private _http: Http) {
+    constructor(private _http: Http,
+                private _ngRedux: NgRedux<IAppState>) {
 
     }
 
@@ -29,6 +34,10 @@ export class PersonService {
     getPage(url: string) : Observable<PersonResults> {
         return this._http.get(url).map(this.extractData)
             .catch(this.handleError);
+    }
+
+    setLastResults(results: PersonResults) {
+        this._ngRedux.dispatch({ type: PersonSearchReducerActions.UpdateResults, payload: results });
     }
 
     private extractData(res: Response) {
