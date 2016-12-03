@@ -99,6 +99,7 @@
     <Content Include="packages.config" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
+    <Content Include="src\app\app.component.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
