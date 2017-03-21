@@ -23,6 +23,8 @@ p.nameFirst = "Kevin";
 
 p.nameLast = "Grossnicklaus";
 
+p.ssn = "123-123-1234";
+
 let fullName = p.getDisplayName();
 
 // Var vs Let
@@ -49,7 +51,7 @@ var _array: number[] = [ 12, 23, 42 ];
 var _first = _array[0];
 
 // null
-var p: Person = null;
+var p2: Person | null = null;
 
 
 

@@ -3,7 +3,7 @@ import { Person } from "./models/Person";
 
 class BaseService<T> {
 
-    getItem(id: number): T {
+    getItem(id: number): T | null {
         return null;
     }
 

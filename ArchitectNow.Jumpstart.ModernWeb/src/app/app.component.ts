@@ -20,5 +20,13 @@ export class AppComponent {
             enhancers = [...enhancers, this._devTools.enhancer()];
         }
         this._ngRedux.configureStore(RootReducer, initialStae, [], enhancers);
+
+
+        
+        this._ngRedux.subscribe(() => {
+            var _state = this._ngRedux.getState();
+
+            //do something meaningfull
+        });
     }
 }

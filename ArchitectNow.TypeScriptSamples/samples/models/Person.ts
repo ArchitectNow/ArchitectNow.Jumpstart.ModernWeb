@@ -10,6 +10,10 @@ export class Person extends BaseModel {
 
     nameLast: string;
 
+    ssn: string;
+
+    isActive: boolean;
+
     getDisplayName(): string {
         return this.nameFirst + " " + this.nameLast;
     }

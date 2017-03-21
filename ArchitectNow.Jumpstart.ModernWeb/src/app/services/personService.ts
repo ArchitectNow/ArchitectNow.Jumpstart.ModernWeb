@@ -13,14 +13,15 @@ export class PersonService {
     readonly rootUrl: string = "http://swapi.co/api/";
 
     constructor(private _http: Http,
-                private _ngRedux: NgRedux<IAppState>) {
+        private _ngRedux: NgRedux<IAppState>) {
 
+       
     }
 
     private buildUrl(searchFilter: string) : string {
         if (!searchFilter)
         {
-            return this.rootUrl + "people";
+            return this.rootUrl + "people/";
         }
 
         return this.rootUrl + "people/?search=" + searchFilter;

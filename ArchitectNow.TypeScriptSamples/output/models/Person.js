@@ -8,7 +8,7 @@ var BaseModel_1 = require("./BaseModel");
 var Person = (function (_super) {
     __extends(Person, _super);
     function Person() {
-        _super.call(this);
+        return _super.call(this) || this;
     }
     Person.prototype.getDisplayName = function () {
         return this.nameFirst + " " + this.nameLast;
