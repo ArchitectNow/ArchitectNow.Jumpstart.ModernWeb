@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Person_1 = require("./models/Person");
 //TypeScript Native Types:
 // number
@@ -11,7 +12,7 @@ var Person_1 = require("./models/Person");
 var n;
 n = 15;
 var s;
-s = "Vader";
+s = "Kevin";
 var p = new Person_1.Person(); // Type is inferred (just like C#)
 p.nameFirst = "Kevin";
 p.nameLast = "Grossnicklaus";

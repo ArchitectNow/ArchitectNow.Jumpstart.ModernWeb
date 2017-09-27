@@ -15,7 +15,7 @@ n = 15;
 
 var s: string;
 
-s = "Vader";
+s = "Kevin";
 
 var p = new Person(); // Type is inferred (just like C#)
 

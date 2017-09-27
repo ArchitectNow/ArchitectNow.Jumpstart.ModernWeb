@@ -1,3 +1,4 @@
+// Inline Interface checked at compile time
 function printLabel(labelledObj) {
     console.log(labelledObj.label);
 }
