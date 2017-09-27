@@ -15,6 +15,7 @@ s = "Vader";
 var p = new Person_1.Person(); // Type is inferred (just like C#)
 p.nameFirst = "Kevin";
 p.nameLast = "Grossnicklaus";
+p.ssn = "123-123-1234";
 var fullName = p.getDisplayName();
 // Var vs Let
 // https://www.typescriptlang.org/docs/handbook/variable-declarations.html 
@@ -38,5 +39,5 @@ var _status = StatusOption.Active;
 var _array = [12, 23, 42];
 var _first = _array[0];
 // null
-var p = null;
+var p2 = null;
 //# sourceMappingURL=1-TypeSamples.js.map

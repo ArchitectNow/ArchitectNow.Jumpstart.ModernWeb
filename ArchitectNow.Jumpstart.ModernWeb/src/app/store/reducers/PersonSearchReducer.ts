@@ -1,6 +1,6 @@
 import { IPersonSearchState } from "../IPersonSearchState";
 
-var INITIAL_STATE = { lastResults: {} } as any as IPersonSearchState;
+var INITIAL_STATE = { lastResults: {} } as IPersonSearchState;
 
 export class PersonSearchReducerActions {
     static UpdateResults: string = "PersonSearch.UpdateResults";
