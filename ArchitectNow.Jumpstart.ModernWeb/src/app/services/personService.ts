@@ -10,7 +10,7 @@ import { PersonSearchReducerActions } from "../store/reducers/PersonSearchReduce
 
 @Injectable()
 export class PersonService {
-    readonly rootUrl: string = "http://swapi.co/api/";
+    readonly rootUrl: string = "https://swapi.co/api/";
 
     constructor(private _http: Http,
         private _ngRedux: NgRedux<IAppState>) {
@@ -21,7 +21,7 @@ export class PersonService {
     private buildUrl(searchFilter: string) : string {
         if (!searchFilter)
         {
-            return this.rootUrl + "people/";
+            return this.rootUrl + "people";
         }
 
         return this.rootUrl + "people/?search=" + searchFilter;
