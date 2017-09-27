@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>People</h1>
+      <h1>Star Wars Action Figures</h1>
       <div>
         Search By: <input type="text" [(ngModel)]="searchFilter"/>&nbsp;<button (click)="search()">Search</button>
       </div>
       <h2>Results</h2>
-      <div *ngIf="!results">
+      <div *ngIf="isLoading">
         Loading results...
       </div>
-      <div *ngIf="results">
+      <div *ngIf="!isLoading">
         <person-row *ngFor="let person of results?.results" [person]="person" (onEdit)="editPerson($event)"></person-row>
       </div>
       <a *ngIf="previousEnabled()" (click)="previousPage()">Previous</a>&nbsp;<a *ngIf="nextEnabled()" (click)="nextPage()">Next</a>

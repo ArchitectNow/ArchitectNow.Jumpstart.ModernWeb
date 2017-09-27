@@ -1,9 +1,6 @@
 "use strict";
-var Person_1 = require("./models/Person"); // extension not required
-// note the rename/alias above
+var Person_1 = require("./models/Person");
 var ApiModule = require("./services/ApiModule");
-// the above uses a wildcard to pull in everything in the file (which has been exported)
-// User of "Export" keyword makes a class visible as a module
 var ModuleSamples = (function () {
     function ModuleSamples() {
     }
