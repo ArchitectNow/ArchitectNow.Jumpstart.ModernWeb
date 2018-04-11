@@ -17,6 +17,8 @@ var s: string;
 
 s = "Vader";
 
+var xyz = true;
+
 var p = new Person(); // Type is inferred (just like C#)
 
 p.nameFirst = "Kevin";
@@ -50,6 +52,7 @@ var _first = _array[0];
 
 // null
 var p: Person = null;
+
 
 
 

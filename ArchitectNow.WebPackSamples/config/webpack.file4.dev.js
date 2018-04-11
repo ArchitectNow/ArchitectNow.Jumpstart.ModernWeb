@@ -8,7 +8,7 @@ module.exports = {
     entry: "./src/testfiles/file5.ts",
     output: {
         path: path.resolve(__dirname, '..', 'wwwroot'),
-        filename: "bundle.js"
+        filename: "output.[hash].js"
     },
     resolve: {
 

@@ -8,7 +8,7 @@ module.exports = {
     entry: "./src/testfiles/file5.ts",
     output: {
         path: path.resolve(__dirname, '..', 'wwwroot'),
-        filename: "../wwwroot/bundle.[hash].js"
+        filename: "../wwwroot/output.[hash].js"
     },
     resolve: {
 
@@ -38,7 +38,7 @@ module.exports = {
 			new CopyWebpackPlugin([{ from: path.resolve(__dirname, '..', 'src', 'testfiles', 'images'), to: 'images' }]),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, '..', 'src', 'testfiles', 'index.html')
-            }),
-            new webpack.optimize.UglifyJsPlugin(),
+            })
+            // new webpack.optimize.UglifyJsPlugin(),
     ]
 };

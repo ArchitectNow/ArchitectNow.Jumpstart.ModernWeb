@@ -71,6 +71,7 @@ class PropertySamples
     {
         this.fullName = name;
 
+
         console.log(this.fullName);
     }
 }
@@ -114,7 +115,7 @@ class StaticSample {
 
 var p = new StaticSample();
 
-if (typeof p === 'StaticSample')
+if (typeof p === 'string')
 {
-    //should be true
+    //should never get here
 }

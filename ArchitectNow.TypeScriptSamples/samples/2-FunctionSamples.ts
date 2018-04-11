@@ -5,14 +5,14 @@ class FunctionSamples {
         //This is a function with no parameters or return type
     }
 
-    moreWork(param1: number, param2: string): boolean {
+    public moreWork(param1: number, param2: string): boolean {
         if (param1 > 0) {
             return false;
         }
         return true;
     }
 
-    defaultValueSamples(param1: boolean, param2: string = "kevin"): number {
+    private defaultValueSamples(param1: boolean = true, param2: string = "kevin"): number {
 
         return 12;
     }
@@ -50,6 +50,7 @@ class FunctionSamples {
 
         let pickedCard2 = this.pickCard(15);
         alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+
     }
 }
 
