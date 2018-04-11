@@ -11,7 +11,7 @@
 
 var n: number;
 
-n = 15;
+n = 33;
 
 var s: string;
 
@@ -52,6 +52,18 @@ var _first = _array[0];
 
 // null
 var p: Person = null;
+
+// Union types
+
+var unionType: string | number;
+
+// String Literal types
+
+type Role = "Admin" | "User" | "ReadOnly";
+
+var role: Role = "Admin";
+
+
 
 
 
