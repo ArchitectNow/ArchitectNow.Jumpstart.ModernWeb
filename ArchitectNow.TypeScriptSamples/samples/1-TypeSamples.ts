@@ -11,7 +11,7 @@
 
 var n: number;
 
-n = 33;
+n = 3;
 
 var s: string;
 
