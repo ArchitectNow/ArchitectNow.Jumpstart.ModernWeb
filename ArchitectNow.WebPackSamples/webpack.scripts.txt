@@ -1,5 +1,5 @@
 ﻿// simple move
-webpack ./src/testfiles/file1.js wwwroot/output.js
+webpack ./src/testfiles/file1.js -o wwwroot/output.js --mode development
 
 // use config file for above
 webpack --config config/webpack.file1.js

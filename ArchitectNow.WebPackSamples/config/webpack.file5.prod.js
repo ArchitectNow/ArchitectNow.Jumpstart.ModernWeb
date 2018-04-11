@@ -1,44 +1,54 @@
-﻿var webpack = require('webpack');
-var path = require('path');
-
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+﻿const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: "./src/testfiles/file5.ts",
     output: {
         path: path.resolve(__dirname, '..', 'wwwroot'),
-        filename: "../wwwroot/output.[hash].js"
+        filename: "../wwwroot/bundle.[hash].js"
     },
+    mode: "production",
     resolve: {
 
-        extensions: ['', '.ts', '.js'],
-        modulesDirectories: ['node_modules'],
-
+        extensions: ['.ts', '.js']
     },
     module: {
-        loaders: [
+        rules: [
 			{
 			    test: /\.html$/,
-			    loader: 'html'
+			    use: [{
+                    loader: 'html-loader'
+                }]
 			},
 			{
 			    test: /\.ts$/,
-			    loaders: [
-					'awesome-typescript-loader'
-			    ]
+			    use: [{
+                    loader: 'awesome-typescript-loader'
+                }]
 			},
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file?name=assets/[name].[hash].[ext]'
+                use: [{
+                    loader: 'file-loader',
+
+                    options: {
+                        name: 'assets/[name].[hash].[ext]'
+                    }
+                }]
             }
         ]
     },
     plugins: [
-			new CopyWebpackPlugin([{ from: path.resolve(__dirname, '..', 'src', 'testfiles', 'images'), to: 'images' }]),
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, '..', 'src', 'testfiles', 'index.html')
-            })
-            // new webpack.optimize.UglifyJsPlugin(),
+        new CopyWebpackPlugin([{ from: path.resolve(__dirname, '..', 'src', 'testfiles', 'images'), to: 'images' }]),
+
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '..', 'src', 'testfiles', 'index.html')
+        }),
+        new webpack.LoaderOptionsPlugin({ // the replacement for UglifyJsPlugin 
+            minimize: true
+          })
     ]
 };
